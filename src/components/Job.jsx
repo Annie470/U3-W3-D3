@@ -1,12 +1,14 @@
 import { Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
-import { Heart } from 'react-bootstrap-icons';
-import { useDispatch } from 'react-redux';
+import { Heart, HeartFill } from 'react-bootstrap-icons';
+import { useDispatch, useSelector } from 'react-redux';
 
 
 const Job = ({ data }) => {
 
 const dispatch = useDispatch()
+const favourites = useSelector((state) => state.favourites.companies);
+const prefe = favourites.some((job) => job._id === data._id);
 
   return (
     <>
@@ -26,12 +28,12 @@ const dispatch = useDispatch()
       <Button variant="outline-info" onClick={()=>{
         dispatch(
           {
-            type: 'ADD_TO',
-            payload: data
+            type: prefe ? 'DELETE' : 'ADD_TO',
+            payload: prefe ? data._id : data
           }
         )
       }}>
-  <Heart />
+  {prefe ? <HeartFill /> : <Heart />}
 </Button>
     </Col>
   </Row>
