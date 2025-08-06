@@ -29,10 +29,10 @@ const CompanySearchResults = () => {
   };
 
   return (
-    <Container>
-      <Row>
-        <Col className="my-3">
-          <h1 className="display-4">Job posting for: {params.company}</h1>
+    <Container className="py-5 text-center">
+      <Row className="justify-content-center">
+        <h1 className="title">Job posting for: {params.company}</h1>
+        <Col className="mt-5 text-center text">     
           {jobs.map(jobData => (
             <Job key={jobData._id} data={jobData} />
           ))}

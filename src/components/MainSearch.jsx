@@ -29,17 +29,17 @@ const MainSearch = () => {
   };
 
   return (
-    <Container>
-      <Row>
+    <Container className="mt-5">
+      <Row className="text-center">
         <Col xs={10} className="mx-auto my-3">
-          <h1 className="display-1">Remote Jobs Search</h1>
+          <h1 className="text-dark-emphasis title">Remote Jobs Search</h1>
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
+            <Form.Control type="search" value={query} onChange={handleChange} placeholder="...Type and press Enter" className="border-info text px-4"/>
           </Form>
         </Col>
-        <Col xs={10} className="mx-auto mb-5">
+        <Col xs={10} className="mx-auto mb-5 text py-5">
           {jobs.map(jobData => (
             <Job key={jobData._id} data={jobData} />
           ))}
