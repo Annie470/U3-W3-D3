@@ -14,7 +14,16 @@ const mainReducer = (state = initialState, action) => {
           companies: [...state.favourites.companies, action.payload],
         },
       };
-
+    case "DELETE":
+      return {
+        ...state,
+        favourites: {
+          ...state.favourites,
+          companies: state.favourites.companies.filter(
+            (job) => job._id !== action.payload
+          ),
+        },
+      };
     default:
       return state;
   }

@@ -1,6 +1,6 @@
 import { Container, Row, Col } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
-
+import SingleFav from './SingleFav';
 const Favourite = () => {
   const favourites = useSelector((state) => state.favourites.companies);
 
@@ -14,14 +14,7 @@ const Favourite = () => {
           </Col>
         ) : (
           favourites.map((c) => (
-            <Col key={c._id} xs={8} className="text-center mb-4 p-3 border rounded">
-              <h3>{c.title}</h3>
-              <p>{c.company_name}</p>
-              <p>
-                {c.category} –{' '}
-                {new Date(c.publication_date).toISOString().slice(0, 10)}
-              </p>
-            </Col>
+            <SingleFav key={c._id} data={c}/>
           ))
         )}
       </Row>
